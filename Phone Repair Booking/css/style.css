@@ -1,0 +1,487 @@
+/*MOBILE FIRST DESIGN*/
+/*All Elements.*/
+*{
+  /*Margin and Padding*/
+  margin: 0;
+  padding: 0;
+  /*Use the Border Box*/
+  box-sizing: border-box;
+  /*Use the Arial Font*/
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*Body Screen*/
+body{
+  min-width: 300px;
+}
+/*CSS Variables*/
+:root {
+    --main-color: #006064;
+    --header-color: #006064;
+    --nav-color: #4DD0E1;
+    --customer-detail-colour: #E0F7FA;
+    --repair-detail-colour: #B2EBF2;
+    --courtesy-phone-color: #80DEEA;
+    --cost-color: #ADD0E1;
+    --button-color: #00ACC1;
+    --footer-color: #0097A7;
+    --javascript-extension-colour: #B2EBF2;
+    --flex-box-colour: #f1f1f1;
+}
+/*Header*/
+header{
+  background-color: var(--header-color);
+  min-height: 12vh;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+/*Default Grid for header.*/
+.headerGrid{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto, auto;
+}
+/*Default Grid for json header*/
+.headerGridFAQ{
+  display: grid;
+  grid-template-columns: 100%;
+}
+/*Header Title Screen*/
+header .title-area{
+  padding: 1.5em 0.5em
+}
+/*Header menu area*/
+header .menu-area ul{
+  display: grid;
+  grid-column: auto auto;
+}
+/*Header menu area links*/
+header .menu-area ul li{
+  display: block;
+  margin-top: 0.3em;
+  background-color: var(--nav-color);
+  margin-bottom: 0.3em;
+  padding: 0.5em;
+}
+/*Header menu area Links*/
+header .menu-area ul li a{
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+}
+/*Main Content*/
+main{
+  width: 100%;
+  min-width: 100px;
+  background-color: var(--main-color);
+}
+/*fieldset*/
+fieldset{
+  padding: 10px;
+}
+/*fieldset container*/
+.fieldset-box{
+  display: grid;
+  grid-row-gap: 10px 5px;
+  grid-template-columns: 100px auto;
+}
+/*input container*/
+.format-inputs, .format-file-inputs{
+  display: grid;
+  grid-template-rows: auto auto;
+}
+/*textarea*/
+textarea{
+  resize: none;
+  width: 100%;
+  margin: 0px 0px 10px 0px;
+}
+/*form layout*/
+.form-layout{
+  width: 100%;
+  display: grid;
+  grid-template-areas: 'customer-details'
+                        'repair-details'
+                        'courtesy-phone'
+                        'cost-section'
+                        'button-section'
+                        'preference-section'
+                        'map-section';
+}
+/*format label and fieldset*/
+.format-inputs > label, fieldset{
+  margin: 10px 0px 0px 0px;
+}
+/*format drop area*/
+.format-inputs > input[type=file]{
+  margin: 10px 0px 0px 0px;
+}
+/*Customer Details*/
+.customer-details{
+  background-color: var(--customer-detail-color);
+  min-height: 30vh;
+  grid-area: customer-details;
+  padding: 10px 30px;
+}
+/*Repair Details*/
+.repair-details{
+  background-color: var(--repair-detail-colour);
+  min-height: 30vh;
+  grid-area: repair-details;
+  padding: 10px 30px;
+  min-width: 200px;
+}
+/*File Preview Display*/
+#file-drop-display{
+  width: 100%;
+  border: 1px solid black;
+  overflow-y: scroll;
+  text-align: center;
+  height: 205px;
+  margin: 10px 0px;
+}
+/*Courtesy Phone*/
+.courtesy-phone{
+  background-color: var(--courtesy-phone-color);
+  min-height: 15vh;
+  grid-area: courtesy-phone;
+  padding: 10px 30px;
+  min-width: 200px;
+}
+/*The table in courtesy phones.*/
+.courtesy-phone > table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+}
+/*all table rows*/
+tr{
+  background-color: #e5e5e5;
+}
+/*all rows and columns*/
+td, th {
+  border: 1px solid black;
+  padding: 8px;
+  font-weight: normal;
+}
+/*First row in the table*/
+th:first-child{
+  width: 60%;
+}
+/*First row in table*/
+tr:first-child {
+  background-color: #b8b8b8;
+  text-align: center;
+}
+/*Add item button*/
+#add-btn{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0px;
+}
+/*Dropzone elements*/
+#shelf, #cart{
+  height: 135px;
+  margin: 20px 10px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+/*Drag and Drop input*/
+.format-drag-inputs{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+}
+/*Charger Incluced*/
+#charger-included{
+  visibility: hidden;
+}
+/*Cost Section*/
+.cost-section{
+  min-height: 10vh;
+  grid-area: cost-section;
+  padding: 10px 30px;
+  align-items: center;
+  min-width: 200px;
+}
+/*Button Section*/
+.button-section{
+  background-color: var(--button-selection-color);
+  min-height: 5vh;
+  text-align: center;
+  padding: 10px 30px;
+  grid-area: button-section;
+}
+/*Button Section*/
+.button-section > button{
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+}
+/*Map Section*/
+.image-map{
+  padding: 10px 30px;
+  grid-area: map-section;
+}
+/*The Map.*/
+#map{
+  margin: 10px 0px;
+  width: 300px;
+  border: 1px solid black;
+}
+/*Preference Section*/
+.preference-section{
+  padding: 10px 30px;
+  grid-area: preference-section;
+}
+/*Flex Box for advanced.html and faq.html*/
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 40px 10px;
+  background-color: var(--javascript-extension-colour);
+}
+/*Each box in the flex container.*/
+.flex-container > div {
+  background-color: var(--flex-box-colour);
+  margin: 10px;
+  padding: 20px;
+  font-size: 20px;
+}
+/*The Statement of Authority (SOA)*/
+.flex-container > div > ul {
+  margin: 20px 10px 0px 20px;
+}
+/*Footer*/
+footer{
+  background-color: var(--footer-color);
+  min-height: 5em;
+  font-weight: bold;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*Modal Form*/
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3),0 6px 20px 0 rgba(0,0,0,0.2);
+  /*animations*/
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  background-color: white;
+  width: 85%;
+  height: 700px;
+  border: 1px solid black;
+  transform: scale(1);
+}
+/*Keyframes of animations*/
+@keyframes animatetop {
+  from {top:-300px; opacity:0; transform: scale(0);}
+  to {top:0; opacity:1; transform: scale(1);}
+}
+@keyframes animatebottom {
+  from {top: 0px; opacity:1; transform: scale(1);}
+  to {top:-300px; opacity:0; transform: scale(0);}
+}
+.modal-header {
+  display: grid;
+  grid-template-areas: 'modal-title' 'cost' 'close';
+  grid-column: 50% 50%;
+  padding: 40px 20px;
+  background-color: #969696;
+}
+.cost{
+  grid-area: cost;
+  display: block;
+  width: auto;
+  text-align: left;
+}
+/* The Close Button */
+.close {
+  grid-area: close;
+  text-align: right;
+  padding: 10px;
+  color: white;
+  width: 30px;
+  margin: 0px 0px 0px auto;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-header h2{
+    grid-area: modal-title;
+}
+.modal-area{
+  display: grid;
+  padding: 10px 0px;
+  grid-template-areas: 'customer-details' 'customer-details' 'job-details';
+}
+.modal-body {
+  margin: 10px;
+  grid-area: customer-details;
+}
+.modal-bod {
+  margin: 10px;
+  grid-area: job-details;
+}
+.modal-footer {
+  display: grid;
+  grid-template-areas: 'store-contact' 'store-phone-number';
+  padding: 26px;
+  border: 1px solid black;
+  border-width: 1px 0px 0px 0px;
+  height: 100px;
+}
+.store-contact{
+  grid-area: store-contact;
+}
+.store-phone-number{
+  grid-area: store-phone-number;
+  text-align: right;
+  margin: auto 0px 0px auto;
+}
+.container{
+  padding: 20px 50px;
+  height: 300px;
+  overflow-y: scroll;
+}
+.modal-dy{
+    display: grid;
+    padding: 10px 0px;
+    grid-row-gap: 10px;
+    grid-template-rows: auto auto auto;
+}
+table {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 5px;
+}
+.itemRecordLabel{
+  max-width: 200px;
+}
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/*Tablets 600px to 769px*/
+@media screen and (min-width: 600px){
+  /*header Grid Layout*/
+  header{
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+  /*header Grid Layout for Links*/
+  header .menu-area ul{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 0.3em;
+  }
+}
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/*Laptops 770px and up*/
+@media screen and (min-width: 769px){
+  /*header Grid Layout*/
+  header {
+      display: grid;
+      grid-template-areas: 'title-space title-space menu-space';
+  }
+  /*Title Area*/
+  .title-area{
+    grid-area: title-space;
+  }
+  /*Menu Area*/
+  .menu-area{
+    grid-area: menu-space;
+  }
+  /*main body Layout*/
+  .form-layout{
+  /*CSS GRID*/
+  grid-template-areas: 'customer-details repair-details courtesy-phone'
+                       'customer-details repair-details cost-section'
+                       'button-section button-section button-section'
+                       'map-section preference-section  preference-section';
+  }
+  /*format inputs*/
+  .format-inputs{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 5px;
+    grid-row-gap: 10px;
+  }
+  /*format fieldset*/
+  fieldset{
+    margin: 20px 0px;
+  }
+  /*Button Section layout*/
+  .button-section > button{
+    width: 10em;
+    margin-bottom: 2px;
+    padding: 10px 10px;
+  }
+  /*Flex cpmtaomer*/
+  .flex-container > div{
+    margin: 10px 20%;
+  }
+  .modal-header {
+    display: grid;
+    grid-template-areas: 'modal-title  cost cost cost close';
+    grid-column: 50% 50%;
+    padding: 40px 20px;
+    background-color: #969696;
+  }
+  .cost{
+    text-align: right;
+  }
+  .modal-area{
+    grid-template-areas: 'customer-details customer-details job-details';
+  }
+  .modal-footer{
+    grid-template-areas: 'store-contact store-phone-number';
+  }
+  .modal-content {
+    height: 570px;
+  }
+  .box3{
+    text-align: right;
+  }
+  .box3 > div{
+    text-align: left;
+  }
+}

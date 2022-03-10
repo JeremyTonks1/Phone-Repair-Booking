@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="eng">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="css/style.css">
+	<title>Phone Fix Booking System</title>
+	<meta name="description" content="This is a phone repair booking prototype.">
+</head>
+<body onload="applySettings()">
+  <!--Navigation bar-->
+  <header id="header" class="headerGrid">
+    <h1 class="title-area">Phone Fix Booking System</h1>
+    <nav class="menu-area">
+				<ul>
+					<li class="links"><a href="">Home</a></li>
+					<li class="links"><a href="pages/advanced.html">Extension</a></li>
+				</ul>
+    </nav>
+  </header>
+  <!--Main Content-->
+  <main id="main">
+    <!--Booking Form-->
+    <form class="form-layout" method="post">
+      <!--Section 1: Customer Details-->
+      <section class="customer-details">
+        <!--Heading-->
+        <h2>Customer Details</h2>
+        <!--Customer Type-->
+        <fieldset>
+          <legend>Customer Type *</legend>
+          <div class="fieldset-box">
+            <label for="consumer">Consumer</label>
+            <input type="radio" id="consumer" name="customer-type" onclick="calculateCosts()" value="consumer" checked>
+            <label for="business">Business</label>
+            <input type="radio" id="business" name="customer-type" onclick="calculateCosts()" value="business">
+          </div>
+        </fieldset>
+        <div class="format-inputs">
+          <!--Title-->
+          <label for="title">Title: *</label>
+          <select id="title" name="title">
+            <option  value="...">...</option>
+            <option  value="Mr">Mr</option>
+            <option  value="Ms">Ms</option>
+            <option  value="Mrs">Mrs</option>
+            <option  value="Miss">Miss</option>
+            <option  value="Dr">Dr</option>
+          </select>
+        </div>
+        <!--First Name-->
+        <div class="format-inputs">
+          <label for="fname">First Name: *</label>
+          <input type="text" id="fname" name="fname">
+        </div>
+          <!--Last Name-->
+        <div class="format-inputs">
+          <label for="lname">Last Name: *</label>
+          <input type="text" id="lname" name="lname">
+        </div>
+        <!--Street-->
+        <div class="format-inputs">
+          <label for="street">Street: *</label>
+          <input type="text" id="street" name="street">
+        </div>
+        <!--Suburb-->
+        <div class="format-inputs">
+          <label for="suburb">Suburb: </label>
+          <input type="text" id="suburb" name="suburb">
+        </div>
+        <!--City-->
+        <div class="format-inputs">
+          <label for="city">City: *</label>
+          <input type="text" id="city" name="city">
+        </div>
+        <!--Post Code-->
+        <div class="format-inputs">
+          <label for="post-code">Post Code: </label>
+          <input type="text" id="post-code" name="post-code">
+        </div>
+        <!--Phone Number-->
+        <div class="format-inputs">
+          <label for="phone-number">Phone Number: *</label>
+          <input type="text" id="phone-number" name="phone-number">
+        </div>
+        <!--Email-->
+        <div class="format-inputs">
+          <label for="email">Email: *</label>
+          <input type="text" id="email" name="email">
+        </div>
+      </section>
+      <!--Section 2: Repair Details-->
+	    <section class="repair-details">
+        <!--Heading-->
+        <h2>Repair Details</h2>
+        <div class="format-inputs">
+          <!--Purchase Date-->
+          <label for="purchase-date">Purchase Date: *</label>
+          <input type="date" id="purchase-date" onchange="checkWarrantyDate()" name="purchase-date" default="">
+        </div>
+        <!--Repair Date-->
+        <div class="format-inputs">
+          <label for="repair-date">Repair Date: *</label>
+          <input type="date" id="repair-date" onchange="checkWarrantyDate()" name="repair-date" default="">
+        </div>
+        <!--Warranty-->
+        <fieldset>
+          <legend>Under Warranty</legend>
+          <div class="fieldset-box">
+            <label for="warranty">Warranty: </label>
+            <input id="warranty" type="checkbox" onclick="checkWarranty()">
+          </div>
+        </fieldset>
+        <!--IMEI Number-->
+        <div class="format-inputs">
+          <label for="IMEI-number">IMEI Number: *</label>
+          <input type="text" id="IMEI-number" name="IMEI-number">
+        </div>
+        <!--Device Make-->
+        <div class="format-inputs">
+          <label for="make">Make: *</label>
+          <select id="make">
+            <option value="...">...</option>
+            <option value="Apple">Apple</option>
+            <option value="LG">LG</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Sony">Sony</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <!--Model Number-->
+        <div class="format-inputs">
+          <label for="model-number">Model Number: </label>
+          <input type="text" id="model-number" name="model-number">
+        </div>
+        <!--Fault-->
+        <div class="format-inputs">
+          <label for="fault">Fault Category: *</label>
+          <select id="fault" name="fault">
+            <option value="...">...</option>
+            <option value="Battery">Battery</option>
+            <option value="Charging">Charging</option>
+            <option value="Screen">Screen</option>
+            <option value="SD-Storage">SD-Storage</option>
+            <option value="Software">Software</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <!--Description-->
+        <div class="format-inputs">
+					  <label for="description">Description:</label>
+	          <textarea name="description" id="description" rows="6" cols="40"></textarea>
+				</div>
+				<!--File Upload-->
+        <div class="format-file-inputs">
+          <label class="file-drop" id="file-drop"><b>Click on the "Choose File" button to upload a file.</b></label>
+          <input class="file-drop-input" type="file" id="my-file" onchange="updateFiles()" multiple accept="image/*">
+        </div>
+        <!--File Preview-->
+        <div id="file-drop-display"></div>
+      </section>
+      <!--section 3: Courtesy Phone-->
+      <section class="courtesy-phone">
+        <!--Heading-->
+        <h2>Courtesy Phone</h2>
+
+        <label>Drag and Drop API:</label>
+        <div class="format-drag-inputs">
+          <div id="shelf" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img src="images/android.png" draggable="true" ondragstart="drag(event)"
+							id="drag1" width="88" height="120">
+          </div>
+          <div id="cart" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+				<hr><br>
+				<div class="format-inputs">
+	        <label for="item-type">Item Type: </label>
+	        <select id="item-type">
+	          <option value="...">...</option>
+	          <option value="Android">Android</option>
+	          <option value="iPhone">iPhone</option>
+	          <option value="Huawei">Huawei</option>
+	          <option value="Charger">Charger</option>
+	        </select>
+        </div>
+        <button type="button" id="add-btn" onclick="addItem()">Add / Remove</button>
+        <!--Reset -->
+        <!--Charged amount-->
+    		<table>
+    			<tr>
+    		    <th>Item</th>
+    		    <th>Cost</th>
+    		  </tr>
+          <tr>
+            <th class="phone-item">No Phone</th>
+            <th class="phone-item">$0</th>
+          </tr>
+          <tr id="charger-included">
+            <th>Charger</th>
+            <th>$30</th>
+          </tr>
+    		</table>
+      </section>
+  		<!--Section 4: Cost Section-->
+  		<section class="cost-section">
+        <!--Heading-->
+				<h2>Cost</h2>
+        <div class="format-inputs">
+          <!--Bond-->
+  				<label for="bond">Bond:</label>
+  				<input type="text" id="bond" name="bond" value="$0.00" readonly>
+          <!--Service Fee-->
+  				<label for="fee">Service Fee:</label>
+  				<input type="text" id="fee" name="fee" value="$85.00" readonly>
+          <!--Total-->
+  				<label for="cost">Total:</label>
+  				<input type="text" id="cost" name="cost" value="$85.00" readonly>
+          <!--GST-->
+  				<label for="GST">GST:</label>
+  				<input type="text" id="GST" name="GST" value="$12.75" readonly>
+          <!--Total + GST-->
+  				<label for="total-cost">Total(+GST):</label>
+  				<input type="text" id="total-cost" name="total-cost" value="$97.75" readonly>
+        <div>
+			</section>
+  		<!--Section 5: User Preference Section-->
+			<section class="preference-section">
+				<!--Heading-->
+				<h2>User Preference</h2>
+				<fieldset>
+					<!--BackGround Colour-->
+					<legend>Background Colour</legend>
+					<div class="fieldset-box">
+						 <!--Blue Background-->
+						<label for="ocean-theme">Blue</label>
+						<input type="radio" id="ocean-theme" onclick="changeColourBlue()" name="colour-mode" checked>
+						 <!--Yellow Background-->
+						<label for="sand-theme">Yellow</label>
+						<input type="radio" id="sand-theme" onclick="changeColourYellow()" name="colour-mode" >
+					</div>
+				</fieldset>
+			</section>
+			<!--Section 5: SVG/Image Map Section-->
+			<section class="image-map">
+				<!--Header-->
+				<h2>Image Map</h2>
+				 <!--Map Container-->
+				<div id="map"></div>
+			</section>
+      <!--Section 5: Button Section-->
+      <section class="button-section">
+        <!--Reset Button-->
+        <button onclick="resetForm()" type="button">Reset</button>
+        <!--Submit Button-->
+        <button onclick="submitForm()" type="button">Submit</button>
+        <!--Modal Form Button-->
+        <button type="button" onclick="loadModal()">Receipt</button>
+      </section>
+    </form>
+  </main>
+  <!--Footer-->
+  <footer id="footer"> Advanced Web Design, &copy Copyright 2019 </footer>
+  <!--Modal Form Overlay-->
+  <div id="my-modal" class="modal-overlay">
+		<!--Modal Form-->
+    <div class="modal-content">
+			<!--Modal Form Header-->
+      <div class="modal-header">
+				<!--Heading-->
+				<h1>Repair Booking</h1>
+				 <!--Service Repair Total Cost-->
+				<div class="cost">Amount Due<h2  class="itemRecord">$350.75</h2></div>
+				<div class="close" onclick="closeModal()">&times;</div>
+      </div>
+			<!--Form Body-->
+			<div class="container">
+				<div class="modal-area">
+		      <div class="modal-body">
+		        <h4>Customer</h4>
+		        <p>
+							</span><span class="itemRecord">Full Name:</span>
+							<br><span class="itemRecord">Street:</span>
+							<br><span class="itemRecord">Address:</span>
+							<br><span class="itemRecord">Phone Number:</span>
+							<br><span class="itemRecord">Email:</span>
+						</p>
+		      </div>
+					<div class="modal-bod">
+						<h4>Repair Job</h4>
+						<p>
+							<span>Job Number: 3001</span>
+							<br>Invoice Date:&#160;<span class="itemRecord"></span>
+							<br>Payment Due:&#160;<span class="itemRecord"></span>
+						</p>
+					</div>
+				</div>
+				<hr>
+				<div class="modal-dy">
+					<div class="box1">
+						<h3>Repair Details</h3>
+						<p>
+							Purchase Date:&#160;<span class="itemRecord"></span>
+							<br>Repair Date:&#160;<span class="itemRecord"></span>
+							<br>Under Warranty:&#160;<span class="itemRecord"></span>
+							<br>IMEI Number:&#160;<span class="itemRecord"></span>
+							<br>Device Make:&#160;<span class="itemRecord"></span>
+							<br>Model Number:&#160;<span class="itemRecord"></span>
+							<br>Fault Category:&#160;<span class="itemRecord"></span>
+							<br>Description:&#160;<span class="itemRecord"></span>
+						</p>
+					</div>
+					<div class="box2">
+						<h2>Courtesy Loan Device Details</h2>
+						<table id="modal-table">
+							<tr>
+								<th>Item</th>
+								<th>Cost</th>
+							</tr>
+						</table>
+					</div>
+					<div class="box3">
+						<h3>Totals</h3>
+						<p>
+							Bonds:&#160;<span class="itemRecord"></span>
+							<br>Service Fee:&#160;<span class="itemRecord"></span>
+							<br>Total:&#160;<span class="itemRecord"></span>
+							<br>GST:&#160;<span class="itemRecord"></span>
+							<br>Total(+GST):&#160;<span class="itemRecord"><br></span>
+						</p>
+					</div>
+				</div>
+				</div>
+				 <!--Footer-->
+	      <div class="modal-footer">
+					<!--Business Details-->
+					<div class="store-contact">
+		        <h2>Phone Fix Services</h2>
+						<p>
+							42 FUXED It Drive
+							<br>Alexander
+						</p>
+					</div>
+					 <!--Contact Details-->
+					<div class="store-phone-number">
+						<h3>Contact Us</h3>
+						<p>
+							<b>Phone:</b>06876543
+						</p>
+					</div>
+	      </div>
+	    </div>
+		</div>	<!--JavaScript code-->
+		<!--Scripts-->
+		<script src="js/script.js"></script>
+		<!--JS Code for the interactive Map. -->
+		<script src="js/countrymap.js"></script>
+		<!--Copyright 2010-2019 Simplemaps.com html5countrymapv4.01
+		Use pursuant to license agreement at https://simplemaps.com/license-->
+</body>
